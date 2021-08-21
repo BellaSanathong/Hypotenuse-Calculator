@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html>
+   <head>
+      <title> Hypotenuse of Right Triangle</title>
+   </head>
+    
+    <body>
+        <label for="leg1">Enter leg 1:</label> <input type="text" id="Leg1" onchange="validateLeg1()"><span id="leg1errormsg"></span><br>
+        <label for="leg2">Enter leg 2:</label> <input type="text" id="Leg2" onchange="validateLeg2()"><span id="leg2errormsg"></span><br>
+
+        <input type="button" value="Submit" id="btnSubmit" onclick="displayhypotenuse()">
+        <br>
+        <p>The hypotenuse is <span id="hypotenuse"></span></p>
+    </body>
+    
+    <script>
+
+    function validateLeg1()
+    {
+         "use strict";
+          var strLeg1;
+          var Leg1;
+
+          // Get the Leg1 from the textbox
+          strLeg1 = document.getElementById("Leg1").value;
+
+          // Convert it to an Float
+          Leg1 = parseFloat( strLeg1 );
+
+          //Make sure the Leg1 is a valid number
+          if (isNaN(Leg1)) {
+              document.getElementById("leg1errormsg").innerHTML = "Invalid Number";
+              return false;
+          } else {
+              // erase the error message
+              document.getElementById("leg1errormsg").innerHTML = "";
+              // enable the submit button
+              return true;
+          }
+    }
+        
+    function validateLeg2()
+    {
+         "use strict";
+          var strLeg2;
+          var Leg2;
+
+          // Get the Leg1 from the textbox
+          strLeg2 = document.getElementById("Leg2").value;
+
+          // Convert it to an Float
+          Leg2 = parseFloat( strLeg2 );
+
+          //Make sure the Leg1 is a valid number
+          if (isNaN(Leg2)) {
+              document.getElementById("leg2errormsg").innerHTML = "Invalid Number";
+              return false;
+          } else {
+              // erase the error message
+              document.getElementById("leg2errormsg").innerHTML = "";
+              // enable the submit button
+              return true;
+          }
+    }
+
+    function displayhypotenuse() 
+    {
+                "use strict";
+         var strLeg1; // string representation of leg 1
+         var Leg1; // numeric representation of leg 1
+         var strLeg2; // string representation of leg 2
+         var Leg2; // numeric representation of leg 2
+         var hypotenuse; // numeric representation of the triangle
+         var leg1errormsg // error message that pops up if the value is not a number
+         var leg2errormsg// error message that pops up if the value is not a number
+        
+        if (validateLeg1() & validateLeg2()) {
+            
+            strLeg1 = document.getElementById("Leg1").value;
+            Leg1 = parseFloat( strLeg1 );
+            strLeg2 = document.getElementById("Leg2").value;
+            Leg2 = parseFloat( strLeg2 );
+            hypotenuse = calculatehypotenuse(Leg1, Leg2);
+            document.getElementById("hypotenuse").innerHTML = hypotenuse.toString();
+         
+        }
+    }
+
+function calculatehypotenuse (leg1, leg2)
+{
+    return Math.sqrt((leg1*leg1) + (leg2*leg2));
+}
+
+</script>
+</html>
